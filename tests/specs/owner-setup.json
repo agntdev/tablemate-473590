@@ -7,12 +7,36 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Configure restaurant settings and table inventory"
+              "text": "Configure restaurant settings and table inventory",
+              "reply_markup": {
+                "inline_keyboard": [[{ "text": "⬅️ Back to menu", "callback_data": "menu:main" }]]
+              }
             }
           }
         ],
         "send": {
           "text": "/owner_setup"
+        }
+      }
+    ]
+  },
+  {
+    "name": "View Bookings button",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Today's capacity summary and upcoming bookings",
+              "reply_markup": {
+                "inline_keyboard": [[{ "text": "⬅️ Back to menu", "callback_data": "menu:main" }]]
+              }
+            }
+          }
+        ],
+        "send": {
+          "callback": "owner:dashboard"
         }
       }
     ]
