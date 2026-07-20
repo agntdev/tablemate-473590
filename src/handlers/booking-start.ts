@@ -1,17 +1,17 @@
 import { Composer } from "grammy";
+import type { Ctx } from "../bot.js";
+import { inlineButton, inlineKeyboard } from "../toolkit/index.js";
 
-// SCAFFOLD — generated from the bot blueprint BEFORE the agent runs.
-// Keep a LIVE registration (.command / .callbackQuery / …) so this feature is
-// never an empty stub. Replace the reply body with real logic + copy; if you
-// change the user-facing text, update tests/specs to match EXACTLY.
-// Do NOT rewrite src/bot.ts — buildBot() already auto-loads this module.
-// Menu: wire this into /start via registerMainMenuItem({ label: "Book Table", data: "booking:start" }) if the toolkit exposes it.
-
-const composer = new Composer();
+// Booking-start handler (initiates the guest booking flow). Captures context and
+// sends a first-step prompt. Extend with real business logic + multi-step flow.
+// Do NOT edit `src/bot.ts` — buildBot() auto-loads this module.
+const composer = new Composer<Ctx>();
 
 composer.callbackQuery("booking:start", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.reply("Initiate booking flow with date/time selection");
+  await ctx.reply("Select a date for your booking", {
+    reply_markup: inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]),
+  });
 });
 
 export default composer;

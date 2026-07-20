@@ -1,13 +1,16 @@
 [
   {
-    "name": "Book Table",
+    "name": "Book Table button",
     "steps": [
       {
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Initiate booking flow with date/time selection"
+              "text": "Select a date for your booking",
+              "reply_markup": {
+                "inline_keyboard": [[{ "text": "⬅️ Back to menu", "callback_data": "menu:main" }]]
+              }
             }
           }
         ],

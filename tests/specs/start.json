@@ -7,7 +7,15 @@
         "expect": [
           {
             "method": "sendMessage",
-            "payload": { "text": "👋 Welcome! Tap a button below to get started." }
+            "payload": {
+              "text": "👋 Welcome! Select your options below.",
+              "reply_markup": {
+                "inline_keyboard": [
+                  [{ "text": "Book Table", "callback_data": "booking:start" }],
+                  [{ "text": "View Bookings", "callback_data": "owner:dashboard" }]
+                ]
+              }
+            }
           }
         ]
       }
